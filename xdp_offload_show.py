@@ -34,18 +34,22 @@ class Status:
                     "total": stat,
                     "per_sec": '0'
                 })
+        # init the last_total attr, prepare for the calculation of pps
         if self.last_total == {}:
             for i in res:
                 self.last_total[i['subject']] = i['total']
         else:
             for i in res:
+                # calculate pps
                 i['per_sec'] = str((int(i['total']) - int(self.last_total[i['subject']]))//self.interval)
                 self.last_total[i['subject']] = i['total']
         return res
 
 
     def get_ethtool_output(self, ifname):
+        # run ethtool with -S
         stdout = subprocess.check_output(['ethtool', '-S', ifname]).decode('utf-8')
+        # get the result list, the element in the list is tuple
         xdp_output = self._search_xdp_stat(stdout)
         print(f"{'Action':20} {'Total(all time)':20} {'Per Second':20}")
         for i in xdp_output:
@@ -67,6 +71,7 @@ if __name__ == "__main__":
     try:
         while True:
             offload_status.get_ethtool_output(args.port)
+            # add a newline after one round
             print()
             time.sleep(args.interval)
     except KeyboardInterrupt:
