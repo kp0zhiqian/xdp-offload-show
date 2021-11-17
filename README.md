@@ -8,7 +8,7 @@ A small tool to provide a easy way to check the XDP offloading status.
 
 ## Usage
 ```shell
-usage: test.py [-h] --port PORT [--interval INTERVAL]
+usage: xdp_offload_show.py [-h] --port PORT [--interval INTERVAL]
 
 Arguments for xdp-offload-show tool
 
