@@ -7,6 +7,7 @@ A small tool to provide a easy way to check the XDP offloading status.
 - ...adding more
 
 ## Usage
+```shell
 usage: test.py [-h] --port PORT [--interval INTERVAL]
 
 Arguments for xdp-offload-show tool
@@ -16,6 +17,7 @@ optional arguments:
   --port PORT, -p PORT  Network interface which running the XDP offloading, required
   --interval INTERVAL, -i INTERVAL
                         Interval to show the output, default is 1 second.
+```
 
 ## Output example:
 ```shell
