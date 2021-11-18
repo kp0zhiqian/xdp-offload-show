@@ -1,4 +1,4 @@
-# xdp-show
+# xdp-offload-show
 A small tool to provide a easy way to check the XDP offloading status.
 
 ## Supported Card
